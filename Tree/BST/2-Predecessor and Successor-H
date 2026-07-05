@@ -1,0 +1,72 @@
+https://www.geeksforgeeks.org/problems/predecessor-and-successor/1
+
+
+Approach: 
+Main idea is to go one of the direction unditionally Do dry run 
+
+
+
+/* BST Node
+class Node {
+	public:
+	int data;
+	Node *left;
+	Node *right;
+	
+	Node(int x) {
+		data = x;
+		left = NULL;
+		right = NULL;
+	}
+};
+*/
+
+class Solution {
+	Node *inorderSuccessor(Node *root, Node *x)
+	{
+		Node *succ = nullptr;
+		
+		while (root)
+			{
+			if (x->data < root->data)
+				{
+				succ = root; // potential successor
+				root = root->left;
+			}
+			else
+				{
+				root = root->right;
+			}
+			// if(succ)cout<<succ->data<<" ";
+		}
+		
+		return succ;
+	}
+	Node *inorderPredecessor(Node *root, Node *x)
+	{
+		Node *pred = nullptr;
+		
+		while (root)
+			{
+			if (x->data > root->data)
+				{
+				pred = root; // potential successor
+				root = root->right;
+			}
+			else
+				{
+				root = root->left;
+			}
+		}
+		
+		return pred;
+	}
+	public:
+	vector<Node*> findPreSuc(Node* root, int key) {
+		
+		return 
+		{inorderPredecessor(root,new Node(key))
+		,inorderSuccessor(root,new Node(key)) };
+		
+	}
+};

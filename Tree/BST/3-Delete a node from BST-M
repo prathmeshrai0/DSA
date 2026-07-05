@@ -1,0 +1,26 @@
+
+https://www.geeksforgeeks.org/problems/delete-a-node-from-bst/1
+
+
+tc h sc h
+
+approach :
+
+Seach Node temp
+
+cases :
+
+temp has 0 child
+    just delete and return null
+
+
+temp has 1 child 
+    store its left or right whichever is available delete temp and return stored Node 
+
+temp has 2 child
+    
+    merge with left 
+    go find max value is the left subtree and replace temp data with maxVal then delete maxVal Node 
+
+    merge with right 
+    go find min value is the right subtree and replace temp data with minVal then delete minVal Node 
