@@ -2,3 +2,40 @@ Easy
 https://www.geeksforgeeks.org/problems/height-of-binary-tree/1
 
 
+/*
+Definition for Node
+class Node {
+public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+    }
+};
+*/
+
+class Solution {
+  public:
+    int height(Node* root) {
+       
+        if(root == NULL){
+            return -1;
+        }
+        
+        int leftCount ; 
+        leftCount  = height(root->left);
+        
+        
+        int rightCount ; 
+        rightCount  = height(root->right);
+      
+        
+        int count = max(leftCount , rightCount) + 1;
+        
+        return count;
+        
+    }
+};
