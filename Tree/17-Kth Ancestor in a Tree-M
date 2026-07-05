@@ -1,0 +1,9 @@
+https://www.geeksforgeeks.org/problems/kth-ancestor-in-a-tree/1
+
+
+Approach
+use map to store values and overwrite the values over map. Eventually when you get the given node just move upwards
+
+the same thing can be done with array vector
+
+better take the reference to the kth value and when you find out your given node just decrement the kth value if it becomes 0 return that node if not return -1

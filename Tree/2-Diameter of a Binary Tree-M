@@ -1,0 +1,53 @@
+https://www.geeksforgeeks.org/problems/diameter-of-binary-tree/1
+
+/*
+Definition for Node
+class Node {
+  public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+    }
+};
+*/
+
+class Solution {
+  public:
+    int solution(Node * root , int &ans){
+        if(root == nullptr){
+            return 0;
+        }
+        else if(! root ->left && ! root -> right){ 
+            
+            ans = max(ans ,0);
+            return 1;
+        }
+        
+        int leftMaxDept = 0, rightMaxDept = 0;
+        leftMaxDept = solution(root->left ,ans);
+        rightMaxDept= solution(root->right ,ans);
+        
+        // update the current node data 
+        // parent node with 2 child
+        if(leftMaxDept > 0 && rightMaxDept > 0 ){
+            ans = max(ans , leftMaxDept + rightMaxDept);
+        }
+        
+        
+        return max(leftMaxDept ,rightMaxDept ) +1;
+        
+        
+    }
+    int diameter(Node* root) {
+        // code here
+        int ans = 0;
+        int maxDistanceBetweenAnyTwoNodes = solution(root ,ans);
+        maxDistanceBetweenAnyTwoNodes -- ;
+        return max(ans,maxDistanceBetweenAnyTwoNodes);
+        
+    }
+};

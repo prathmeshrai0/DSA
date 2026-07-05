@@ -1,0 +1,50 @@
+https://www.geeksforgeeks.org/problems/construct-tree-1/1
+
+
+Approach
+preorder - nlr
+inorder - lnr
+
+        0
+      /   \
+      1    2
+     / \   /
+    3  4  5
+
+preorder - 0 1 3 4 2 5    
+
+inorder -  3 1 4 0 5 2
+
+preorder[0] - root node
+
+inorder 0 found at index 3 divide into two parts
+
+- 3 1 4
+- 5 2
+
+preorder[1] - 1
+
+search in left if found then go to next value
+
+if not found in left then go to right side
+
+>**important** use int i as reference in recursion function to iterate through all value
+
+because if you found value v1 in left l1 then move further 
+
+then next value v2 is not found nor left neither right of l1
+
+so you go back to n1 root to search in the right r1 the value is not l1 but l2 
+
+this is why its important to take reference
+
+
+
+tc - n2 
+
+sc - n2 
+
+because you are searching for every node and creating leftsub and rightsub as well 
+
+
+Note - you can even use map to search index that gives tc - n , sc -n
