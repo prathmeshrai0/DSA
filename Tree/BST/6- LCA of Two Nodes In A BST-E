@@ -1,0 +1,24 @@
+https://www.naukri.com/code360/problems/lca-in-a-bst_981280?leftPanelTab=0&leftPanelTabValue=PROBLEM
+
+
+
+approach 
+go on left when both are less than root
+go on right when both are more than root
+else cases:
+    val1 < root && val2 > root 
+    val1 > root && val2 < root 
+    root == val1 or val2
+    in all above cases return root;
+
+
+    for normal binary tree logic applied
+    tc n sc n without bst logic
+
+    with bst logic
+    tc Balanced BST: O(log n)  Skewed BST: O(n) 
+    sc n with recursion
+    sc 1 with iteration
+
+
+

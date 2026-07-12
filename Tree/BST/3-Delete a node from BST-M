@@ -24,3 +24,7 @@ temp has 2 child
 
     merge with right 
     go find min value is the right subtree and replace temp data with minVal then delete minVal Node 
+
+
+minVal - go on the leftmost of root;
+maxVal - go no the rightmost of root

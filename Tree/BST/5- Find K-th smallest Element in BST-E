@@ -1,0 +1,11 @@
+https://www.naukri.com/code360/problems/find-k-th-smallest-element-in-bst_1069333?leftPanelTab=0&leftPanelTabValue=PROBLEM
+
+
+approach 
+within inorder traversal keep count and when count reaches desired value return node / number 
+
+with recursion
+tc n sc n 
+
+with morris 
+tc n sc 1

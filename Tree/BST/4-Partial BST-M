@@ -1,0 +1,18 @@
+https://www.naukri.com/code360/problems/validate-bst_799483?leftPanelTab=0&leftPanelTabValue=PROBLEM
+
+
+brute force 
+for every node go and check if its valid or not 
+tc n2 , sc n with recursion
+tc n2 , sc 1 with iteration
+
+better 
+take out inorder of bst 
+and we know that bst inorder is sorted so if sorted then valid otherwise not 
+
+tc n sc n with or without recursion , to store inorder values in array
+
+optimal
+take out range for every node and check if it lies within in the range if not return false otherwise return true
+
+tc n , sc 1 with morris traversal
