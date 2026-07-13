@@ -1,0 +1,20 @@
+https://www.naukri.com/code360/problems/two-sum-in-a-bst_1062631?leftPanelTab=0&leftPanelTabValue=PROBLEM
+
+
+
+approach 
+
+
+********** Brute force ***********
+
+1 for every node take out its search Val = target - curr root data 
+
+2 search that value within whole tree but keep in mind excluding the curr node as its two sum
+    eg 
+        sum given = 4
+        curr node data = 2
+        if counted its own 2 + 2 = 4 , but its not two diff value as its same one 
+
+3 if you found that values within the tree return true 
+
+4 once you have got true from either of (left, right ,curr) return true continuously by skipping other function calls
