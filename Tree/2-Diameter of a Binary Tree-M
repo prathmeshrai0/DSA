@@ -1,53 +1,373 @@
 https://www.geeksforgeeks.org/problems/diameter-of-binary-tree/1
 
-/*
-Definition for Node
-class Node {
-  public:
-    int data;
-    Node* left;
-    Node* right;
 
-    Node(int val) {
-        data = val;
-        left = right = nullptr;
-    }
-};
-*/
+*********************** brute force **************************
 
-class Solution {
-  public:
-    int solution(Node * root , int &ans){
-        if(root == nullptr){
-            return 0;
-        }
-        else if(! root ->left && ! root -> right){ 
-            
-            ans = max(ans ,0);
-            return 1;
-        }
-        
-        int leftMaxDept = 0, rightMaxDept = 0;
-        leftMaxDept = solution(root->left ,ans);
-        rightMaxDept= solution(root->right ,ans);
-        
-        // update the current node data 
-        // parent node with 2 child
-        if(leftMaxDept > 0 && rightMaxDept > 0 ){
-            ans = max(ans , leftMaxDept + rightMaxDept);
-        }
-        
-        
-        return max(leftMaxDept ,rightMaxDept ) +1;
-        
-        
-    }
-    int diameter(Node* root) {
-        // code here
-        int ans = 0;
-        int maxDistanceBetweenAnyTwoNodes = solution(root ,ans);
-        maxDistanceBetweenAnyTwoNodes -- ;
-        return max(ans,maxDistanceBetweenAnyTwoNodes);
-        
-    }
-};
+### Example Tree
+
+```
+        1
+         \
+          2
+         / \
+        3   4
+       /     \
+      5       6
+```
+
+The longest path is:
+
+```
+5 → 3 → 2 → 4 → 6
+```
+
+Number of edges:
+
+```
+5-3 = 1
+3-2 = 1
+2-4 = 1
+4-6 = 1
+
+Total = 4 edges
+```
+
+So diameter = **4**.
+
+---
+
+## Why `lheight + rheight`?
+
+Suppose we're at node `2`.
+
+```
+        2
+       / \
+      3   4
+     /     \
+    5       6
+```
+
+### Left Height
+
+```
+2 → 3 → 5
+```
+
+Height of left subtree = 2 nodes.
+
+### Right Height
+
+```
+2 → 4 → 6
+```
+
+Height of right subtree = 2 nodes.
+
+The longest path passing through node `2` is:
+
+```
+5 → 3 → 2 → 4 → 6
+```
+
+Length in edges:
+
+```
+left height (2)
++
+right height (2)
+=
+4
+```
+
+Hence:
+
+```cpp
+lheight + rheight
+```
+
+gives the diameter passing through the current node.
+
+---
+
+## Why compare with `ldiameter` and `rdiameter`?
+
+The longest path may:
+
+1. Pass through the current root.
+2. Lie entirely inside the left subtree.
+3. Lie entirely inside the right subtree.
+
+So:
+
+```cpp
+return max({
+    lheight + rheight, // through root
+    ldiameter,         // inside left subtree
+    rdiameter          // inside right subtree
+});
+```
+
+---
+
+## Dry Run at Node 2
+
+```
+        2
+       / \
+      3   4
+     /     \
+    5       6
+```
+
+For node `2`:
+
+```cpp
+lheight = 2
+rheight = 2
+
+ldiameter = 1   // path 5-3
+rdiameter = 1   // path 4-6
+```
+
+Therefore:
+
+```cpp
+max(2+2, 1, 1)
+=
+max(4, 1, 1)
+=
+4
+```
+
+So diameter = **4**.
+
+---
+
+### Time Complexity Problem
+
+This solution is **O(n²)**.
+
+Why?
+
+For every node:
+
+```cpp
+diameter(root)
+```
+
+calls
+
+```cpp
+height(root->left)
+height(root->right)
+```
+
+and each `height()` traverses many nodes again.
+
+
+************************************* optimal ************************************
+
+
+### Diameter of Binary Tree (Optimized O(n))
+
+#### Approach
+
+1. Use **postorder DFS**.
+2. Recursive function returns the **height** of the current subtree.
+3. For every node:
+
+   * Get left subtree height.
+   * Get right subtree height.
+   * Diameter passing through current node =
+
+```cpp
+leftHeight + rightHeight
+```
+
+4. Update global diameter:
+
+```cpp
+ans = max(ans, leftHeight + rightHeight);
+```
+
+5. Return height to parent:
+
+```cpp
+max(leftHeight, rightHeight) + 1
+```
+
+---
+
+#### Why return height?
+
+The parent needs heights of its children to calculate:
+
+```cpp
+leftHeight + rightHeight
+```
+
+So each node returns:
+
+```cpp
+height = max(leftHeight, rightHeight) + 1
+```
+
+---
+
+#### Why `ans`?
+
+`ans` stores the **maximum diameter found so far**.
+
+At every node:
+
+```cpp
+ans = max(ans, leftHeight + rightHeight);
+```
+
+This checks whether the longest path passing through the current node is better than the best diameter seen previously.
+
+---
+
+#### Example
+
+```text
+        1
+       / \
+      2   3
+     /     \
+    4       5
+```
+
+At node `1`:
+
+```cpp
+leftHeight = 2
+rightHeight = 2
+
+ans = max(ans, 2 + 2)
+ans = 4
+```
+
+Diameter path:
+
+```text
+4 -> 2 -> 1 -> 3 -> 5
+```
+
+Diameter = **4 edges**
+
+---
+
+#### Return Value vs `ans`
+
+```text
+Return value -> Height of subtree
+
+ans -> Maximum diameter in the entire tree
+```
+
+---
+
+#### Complexity
+
+```text
+Time  : O(n)
+Space : O(h)
+```
+
+where:
+
+```text
+h = height of tree
+
+Balanced Tree -> O(log n)
+Skewed Tree   -> O(n)
+```
+
+---
+
+### Revision (2 lines)
+
+```text
+Use postorder DFS to compute subtree heights.
+At every node update diameter using (leftHeight + rightHeight) and return height as max(leftHeight, rightHeight) + 1.
+```
+
+
+
+example 2
+
+
+
+### Short Explanation
+
+```text
+            1
+           / \
+          2   3
+             / \
+            4   5
+           /     \
+          6       7
+         /         \
+        8           9
+```
+
+At node `3`:
+
+```cpp
+leftHeight = 3
+rightHeight = 3
+
+ans = 3 + 3 = 6
+```
+
+Diameter path:
+
+```text
+8 -> 6 -> 4 -> 3 -> 5 -> 7 -> 9
+```
+
+Diameter = **6 edges**
+
+---
+
+At root `1`:
+
+```cpp
+leftHeight = 1
+rightHeight = 4
+
+height = 5
+height - 1 = 4
+```
+
+---
+
+### Key Point
+
+```text
+height - 1 = 4
+diameter   = 6
+```
+
+The longest path lies completely inside the right subtree, so height cannot find it.
+
+Therefore:
+
+```text
+Return value -> Height of subtree
+
+ans -> Maximum diameter found anywhere in the tree
+```
+
+That's why we update:
+
+```cpp
+ans = max(ans, leftHeight + rightHeight);
+```
+
+at every node.
+
+
