@@ -1,1 +1,20 @@
 https://www.geeksforgeeks.org/problems/sum-tree/1
+
+
+approach
+
+******************** Brute force app **************************
+
+1 take out left subtree sum data 
+2 do the same for the right subtree
+3 add them and check if its equal to root data , if not return false , if true go on next 
+4 use any traversal  
+
+
+
+******************** optimal app **************************
+
+1 use post order dfs 
+2 for every node recursively from bottom (while recursion is returning) check its leftsum + rightsum equals root data or not 
+4 if value is not equal return false by skipping other recursive calls 
+5 otherwise return leftsum + rightsum + rootdata to uppper node 
