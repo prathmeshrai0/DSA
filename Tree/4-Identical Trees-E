@@ -1,1 +1,40 @@
 https://www.geeksforgeeks.org/problems/determine-if-two-trees-are-identical/1
+
+
+approach 
+
+Main idea is to :
+
+if any of the node is null while other is not return false
+if (!r1 && r2 )return false;
+else if (!r2 && r1 )return false;
+
+if both are null return true
+else if(r1 == nullptr && r2 == nullptr)return true;
+
+if data doesn't match return false, this is written at last to avoid runtime error of accessing data of null 
+else if(r1->data != r2 ->data )return false;
+
+
+Now just change to type of traversals to get diff optimizations
+
+****************** Brute force app ************************
+
+The idea is to compare the root node's data and recursively verify that their left and right subtrees are identical.
+Both trees must have the same structure and data at each corresponding node.
+
+tc n sc n
+
+
+****************** Better app ************************
+
+use level order traversal 
+recursion overhead removed , but added 2 queue to compare data  
+tc n sc n
+
+****************** optimal app ************************
+
+use morris traversal 
+sc - 1
+
+tc n sc 1

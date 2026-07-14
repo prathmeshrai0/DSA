@@ -5,7 +5,7 @@ https://www.naukri.com/code360/problems/two-sum-in-a-bst_1062631?leftPanelTab=0&
 approach 
 
 
-********** Brute force ***********
+********** Brute force app ***********
 
 1 for every node take out its search Val = target - curr root data 
 
@@ -18,3 +18,26 @@ approach
 3 if you found that values within the tree return true 
 
 4 once you have got true from either of (left, right ,curr) return true continuously by skipping other function calls
+
+
+
+
+************** better app  ********************
+    create a map then search in that map
+    tc - n sc n
+    //            num count
+    unordered_map<int,int> freq ;
+
+
+
+************** optimal app  ********************
+
+    // optimal
+    // tc n sc n
+
+    // as we know that inorder gives sorted values in bst 
+
+    1 create vector to store the inorder value 
+    2 use two pointer approach to search the value in the array 
+    3 increase/decrease the index accordingly
+    4 if found value return true otherwise if pointer overlaps then end loop ultimately return false
