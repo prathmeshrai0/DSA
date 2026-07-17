@@ -26,7 +26,7 @@ Both trees must have the same structure and data at each corresponding node.
 tc n sc n
 
 
-****************** Better app ************************
+****************** alternate app ************************
 
 use level order traversal 
 recursion overhead removed , but added 2 queue to compare data  
