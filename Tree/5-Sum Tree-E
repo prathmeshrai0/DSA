@@ -5,11 +5,14 @@ approach
 
 ******************** Brute force app **************************
 
-1 take out left subtree sum data 
-2 do the same for the right subtree
-3 add them and check if its equal to root data , if not return false , if true go on next 
-4 use any traversal  
+use any dfs to travel through all nodes 
+use only post order dfs while calculating the height of left and right
+take out left subtree sum data 
+do the same for the right subtree
+add them and check if its equal to root data , if not return false , if true go on next 
 
+tc n2 sc n 
+you are going on every node to calculate its left and right sum data 
 
 
 ******************** optimal app **************************
@@ -18,3 +21,5 @@ approach
 2 for every node recursively from bottom (while recursion is returning) check its leftsum + rightsum equals root data or not 
 4 if value is not equal return false by skipping other recursive calls 
 5 otherwise return leftsum + rightsum + rootdata to uppper node 
+
+tc n sc n
