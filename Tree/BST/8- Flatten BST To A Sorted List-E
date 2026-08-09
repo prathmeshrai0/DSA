@@ -1,0 +1,18 @@
+<!-- https://www.naukri.com/code360/problems/flatten-bst-to-a-sorted-list_1169459?leftPanelTab=0&leftPanelTabValue=PROBLEM -->
+
+
+
+<!-- approach  -->
+
+<!-- brute force  -->
+take out int data from bst to array then sort it and then make linked list of it then return head of ll
+optimized : better use inorder to avoid sorting afterwards 
+
+
+<!-- better  -->
+make it inplace by using vector to store node not int data 
+
+
+<!-- optimal  -->
+use morris traversal with inorder, make a temp node and keep on inserting nodes as you get in traversal also making its left to null while iterating.
+at end return temp->right

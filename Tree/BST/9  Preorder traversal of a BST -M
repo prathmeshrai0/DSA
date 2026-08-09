@@ -1,0 +1,130 @@
+https://www.naukri.com/code360/problems/preorder-traversal-to-bst_893111?leftPanelTab=0
+
+
+you need to create a bst from given preorder data given in array 
+
+
+
+<!-- approach -->
+
+<!-- brute force -->
+
+from preorder first element make it as root of tree
+
+make a function which insert into the tree when node is not available by also comparing the data 
+
+lets say root is 20
+now element comes as 14
+so comparison happens root->data > current data // insert in its left 
+root->left which is null now points to 14 
+
+keep doing this for every element of the given preorder array 
+
+
+// tc n2 sc n (skwed) 
+    while iterating every element within iteration loop and for every element inserting into the tree while traversing with recursion over all nodes of tree
+
+// tc nlogn sc logn (balanced)
+    n for iteration 
+    and logn for traversal of bst balanced
+
+
+
+
+<!-- better app -->
+
+sort the given preorder 
+
+use mid , start , end approach of binary search 
+
+use mid to make it root
+mid -> left - range goes from start to mid -1
+mid -> right - range goes from mid + 1 to end 
+
+do the above operation recursively
+
+tc - nlogn (sorting) + n (constructing bst) = nlogn
+sc - logn(stack used internally for sorting) + logn (recursion stack for creating bst) = logn
+
+
+
+<!-- optimal app -->
+
+think of range from min to max 
+
+start with INT_MIN to INT_MAX
+
+first element does lies in the range so put 
+
+on its left give min range as INT_MIN and max as current data
+
+on its right give max as INT_MAX and min as data 
+
+so for every node on its left set upper bound as current data and lower bound for right side 
+
+do this recursively 
+
+
+
+tc - 3n = n 
+sc - logn for balanced / n for skewed 
+
+
+<!-- optimal ++ -->
+
+used only a single variable to make bst instead of min and max variable
+
+take only upper bound variable 
+
+for every node on its left set upperbound as current node data 
+
+for every node on its right set upperbound as prev node data which can be get in the upperbound variable as current data is got by preorder[i] 
+
+create element only when its value is less than upper bound 
+
+eg - 10 4 3 7 40 55 
+
+ub = INT_MAX
+10 < ub
+valid
+10 - created
+
+10 ->left ub as 10 
+
+ub = 10
+4 < 10 
+valid
+4 is created
+
+4->left ub as 4
+
+ub = 4
+3 also valid
+valid 
+3 is created
+
+3->left ub as 3
+
+ub = 3
+7  < 3 
+invalid 
+
+return from it 
+
+3 ->right ub as its ub (3 is created is called) given which is 4
+
+7 < 4 
+invalid 
+
+return form it
+
+now you are on root 4 
+
+4 ->right ub as 10
+
+7 < 10
+valid 
+7 is created 
+
+... so on 
+

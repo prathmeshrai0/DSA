@@ -13,8 +13,8 @@ void morrisInorder(BinaryTreeNode<int>* root){
                 prev = prev ->right;
             }
 
+            // linking
             if(prev->right == nullptr){
-                // linking
                 prev->right = root;
                 root = root->left;
             }
