@@ -1,0 +1,11 @@
+https://www.geeksforgeeks.org/problems/maximum-sum-of-non-adjacent-nodes/1
+
+
+
+Approach
+think of only these 2 cases
+
+what is the sum while including that node - currNodeData + child->child->data
+
+what is the sum while excluding that node - don't just include child->data
+but do include max(child->data , child->child->data)

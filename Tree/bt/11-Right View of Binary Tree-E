@@ -1,0 +1,68 @@
+https://www.geeksforgeeks.org/problems/right-view-of-binary-tree/1
+
+
+
+/*
+Definition for Node
+class Node {
+  public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+    }
+};
+*/
+
+class Solution {
+  public:
+    vector<int> rightView(Node *root) {
+        //  vl  value
+        map<int,int> mp;
+        
+        queue <Node *> qu;
+        
+        
+        int level = 0;
+        
+        qu.push(root);
+        qu.push(nullptr);
+        
+        while(! qu.empty()){
+            
+            Node * temp  = qu.front();
+            qu.pop();
+            
+            if(temp == nullptr){
+                level ++;
+                if(qu.size()){
+                    qu.push(nullptr);
+                }
+            }
+            else{
+                mp[level] =  temp->data;
+                
+                if(temp ->left ){
+                    qu.push(temp->left);
+                }
+                
+                if(temp->right)qu.push(temp->right);
+            }
+            
+        }
+        
+        
+        vector<int> ans;
+        
+        for(auto i : mp){
+            ans.push_back(i.second);
+        }
+        
+        
+        return ans;
+        
+    }
+};

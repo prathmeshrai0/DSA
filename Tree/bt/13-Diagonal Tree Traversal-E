@@ -1,0 +1,41 @@
+https://www.geeksforgeeks.org/problems/diagonal-traversal-of-binary-tree/1
+
+
+/* A binary tree node
+struct Node
+{
+    int data;
+    Node* left, * right;
+}; */
+
+class Solution {
+  public:
+    void solutionInorder(Node * root , map<int,vector<int> > & mp ,int level = 0){
+        
+        if(!root)return;
+        
+        solutionInorder(root->left,mp,level + 1);
+        mp[level].push_back(root->data);
+        
+        solutionInorder(root->right,mp,level );
+
+    }
+    vector<int> diagonal(Node *root) {
+        // level , data
+        map<int,vector<int> > mp;
+        
+        solutionInorder(root,mp);
+        
+        vector<int> ans; 
+        
+        for(auto pairOfMap : mp){
+            
+            for(int j : pairOfMap.second){
+                ans.push_back(j);
+            }
+        }
+        
+        return ans;
+        
+    }
+};

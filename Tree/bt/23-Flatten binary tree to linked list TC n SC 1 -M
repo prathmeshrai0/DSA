@@ -1,0 +1,7 @@
+https://www.geeksforgeeks.org/problems/flatten-binary-tree-to-linked-list/1
+
+
+
+Approach
+1.The only traversal is morris traversal to have tc n and sc 1 so use it 
+ link left rightmost node to root's right and so on.

@@ -1,0 +1,58 @@
+
+https://www.geeksforgeeks.org/problems/zigzag-tree-traversal/1
+
+/*
+Definition for Node
+class Node {
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+*/
+class Solution {
+  public:
+    vector<int> zigZagTraversal(Node* root) {
+        
+        bool leftToRight  = true;
+        
+        if(!root)return {};
+        
+        queue<Node *> qu;
+        qu.push(root);
+        vector<int> ans;
+        
+        
+        while(!qu.empty()){
+            
+            int size = qu.size();
+            vector<int> temp(size);        
+            
+            
+            for(int i = 0 ; i<size; i++){
+                Node * frontNode = qu.front();
+                qu.pop();
+                
+                int index = leftToRight ? i : size - 1 - i;
+                temp[index] = frontNode ->data;
+                
+                if(frontNode->left)qu.push(frontNode->left);
+                if(frontNode->right)qu.push(frontNode->right);
+
+            }
+            leftToRight = !leftToRight;
+            
+            for(auto i: temp){
+                ans.push_back(i);
+            }
+            
+        }
+        
+        return ans;
+        
+    }
+};

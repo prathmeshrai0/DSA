@@ -1,0 +1,7 @@
+https://www.geeksforgeeks.org/problems/inorder-traversal/1
+
+
+
+Approach
+1.   create mapping with its parent , then go on extreme left print it make it prev then move to parent print it then move to right and then repeat steps from above going in extreme left and so on 
+ for a particular node if you are returning from 
