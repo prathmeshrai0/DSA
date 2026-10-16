@@ -1,0 +1,12 @@
+ques type 1 - E 
+  given 2 bst , merge them and then return an array that contain data of both bst in sorted order 
+
+
+approach :
+
+  convert bst into array ,then merge it and then return the merged value 
+
+  bstToArray - tc n sc n (arr1 + recursion stack in worst case)
+
+  merger - tc n+m sc n+m - NOTE sc cannot be negelected just because we have to return merged array but you have used arr1 and arr2 and temporary storage so its valid
+  
