@@ -1,0 +1,38 @@
+https://www.naukri.com/code360/problems/build-min-heap_1171167?leftPanelTab=0&leftPanelTabValue=PROBLEM
+
+
+
+
+given some random data in array but you need to convert it into heap 
+
+
+
+<!-- approach  -->
+
+start with nonleaf node 
+
+now the basic idea is to create heap of every part and we know that leaf nodes are already heap so we skip that and continue from nonLeaf nodes 
+
+run loop from that nonLeaf till root node i.e 0,1 indexed, based on indexing given 
+
+
+now find the index with the largest / smallest based on min/max heap you need to create 
+
+once you got the index then swap with current index 
+
+then call the recursion for swapped node as we just need to check that below subtree is also a heap
+
+
+
+
+
+tc- n (this is logical beacause you are running loop from nonLeaf to root and for every node you are doing heapify which costs logn
+
+but also it doesn't count as nlogn but n only)
+
+Nodes near the root cost more, but there are very few of them. Nodes near the leaves are numerous, but cost almost nothing to heapify. That's why building a heap takes (O(N)) time.
+
+
+
+
+sc - logn (sc is justified because we are running recursion data and heap is also a cbt so it can be max logn and not n for skewed tree)

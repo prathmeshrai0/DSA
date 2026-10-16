@@ -1,0 +1,56 @@
+https://www.naukri.com/code360/problems/largest-bst-subtree_893103?leftPanelTab=0&leftPanelTabValue=PROBLEM
+
+find the largest bst in bt
+
+<!-- brute force approach -->
+
+for every node you need to run check bst func
+
+
+chekc bst fun: 
+    range based checking 
+    start with INT_MIN and INT_MAX
+    update range like below condition
+        for left subtree update maxi as current data
+        for right subtree update mini as current data
+    if node lies btw the range then go below to other nodes 
+
+    otherwise return false by skipping further function calls 
+
+
+tc - n2 (for skewed tree case)
+        n , n-1 , n-2 ....
+   node 1 , 2,  , 3
+
+
+N + N-1 + N-2 ... + 1 = N(N+1)/2
+
+
+sc - n (skewed tree case)
+
+
+
+
+
+
+
+<!-- optimised  -->
+
+do post order traversal
+
+you need to return four things 
+    is bt a valid bst 
+    below things are only needed if the bt is valid bst 
+        its count 
+        bst minimum value 
+        bst maximum value
+
+made a stuct/class for this
+
+basically if left and right is valid bst so for current node 
+check its data is greater than its left maximum 
+and less than its right minimum
+if so then return true or update count 
+
+tc - n 
+sc  - n 

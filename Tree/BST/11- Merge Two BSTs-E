@@ -1,0 +1,57 @@
+https://www.naukri.com/code360/problems/h_920474?leftPanelTab=0&leftPanelTabValue=PROBLEM
+
+
+
+two seperate bst is give you need to merge them and give a single bst 
+
+
+<!-- approach -->
+
+<!-- brute  -->
+
+take out data from both tree 
+
+store it in single array 
+
+sort it 
+
+return it 
+
+
+tc - nlogn (sorting)
+
+sc - n + m (diff array to store the value of each tree)
+
+
+
+
+<!-- better  -->
+
+first convert both bst to array of data use inorder traversal
+
+then make single ans array by inserting the min value from both of the array using a two-pointer approach
+
+return the final array 
+
+
+for creating and storing all the data 
+
+tc - n + m 
+
+sc - n + m 
+
+
+
+
+<!-- optimal -->
+
+convert bst into sorted linked list (n with morris,1)
+
+traverse both linked list and add min data value to array (n + m  traversing over all nodes , 1) 
+
+return array 
+
+
+tc - n + m 
+sc - 1
+
