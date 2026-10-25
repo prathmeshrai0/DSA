@@ -2,3 +2,48 @@ https://www.naukri.com/code360/problems/build-heap_975375
 
 
 
+basically you need  to build heap form given data 
+
+
+<!-- approach  -->
+
+<!-- brute force -->
+
+use the insertion method of heap and start creating then continuously insert elements into the heap into another array
+
+this approach is heapify up 
+
+
+tc - nlogn
+
+sc - n
+
+
+
+<!-- optimised -->
+
+    This is the heapify method. The approach is:
+    compare the node with its left and right child,
+    find the largest among them, and swap if needed.
+
+    While building the heap, we skip all leaf nodes
+    because leaf nodes already satisfy the heap property.
+
+    we run loop from nonleaf to 0 th index 
+
+    In a complete binary tree, about half the nodes are leaves.
+    As we move upward, the number of nodes decreases while
+    the cost of heapify increases.
+
+    bottom level  n/2 nodes    cost is 0 (because it satifies the heap condition so we skip them)
+    above         n/4 nodes     cost is 1 
+    .
+    .
+    .
+
+    for only level first we have cost of logn 
+
+    so we can't just add up all the cost 
+
+    TC: O(n)
+    SC: O(log n)   // due to recursive heapify call stack
