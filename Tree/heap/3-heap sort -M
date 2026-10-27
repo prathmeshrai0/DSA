@@ -1,0 +1,54 @@
+https://www.geeksforgeeks.org/problems/heap-sort/1
+
+
+
+basically you are given unsorted data and you need to sort that with the help of heap sort 
+
+
+
+<!-- approach  -->
+
+<!-- brute force  -->
+
+	    Here its a heapify function that basically convert tree (unordered data) into heap 
+	    
+	    and we know in any heap like min/max heap the 
+	    first element of array or the root of the tree is the min/max element respectively
+	    
+	    let's consider max heap scenario in which we need to make sort ascending
+	    so what we do basically first convert unordered data into heap (tc n sc logn)
+	    now first element of array is max of all 
+	    so we do swap with the last index 
+	    
+	    then again we convert all data into heap excluding the last index 
+	    then again swap ... and so on
+	    
+	    tc- n2
+	    sc- logn
+
+
+
+
+
+
+
+<!-- optimal -->
+
+first of all do build heap (do max heap in ascending )
+	   
+	   then we know that top element of the heap is the largest 
+	   swap it to last index 
+	   
+	   now basically the current top index value in that heap is not 
+	   in its correct position other element are unchanged so its 
+	   basically in its right place 
+	   
+	   so do heapify for top element only which is single element by excluding the last index because its in its right place
+	   
+	   now we again have max heap created so swap with second last 
+	   index 
+	   
+	   and continue this process until you got sorted array 
+	   
+	   Tc (buildHeap) n + (loop over array * single heapify call) nlogn ~ nlogn
+	   Sc - build heap (logn) + single heapify call logn ~ logn
