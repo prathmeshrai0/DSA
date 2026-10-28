@@ -1,0 +1,25 @@
+https://www.naukri.com/code360/problems/merge-two-binary-max-heaps_1170049?leftPanelTabValue=PROBLEM
+
+you need to merge two max heaps into a sinlge max heap
+
+approach
+
+<!-- 1 -->
+
+use insertion logic (heapify up) here by inserting one array items into other
+
+A single insertion takes:
+O(log current_heap_size)
+
+The heap size is growing from n to n+m.
+tc mlog(n+m)
+sc 1
+
+
+
+<!-- 2 -->
+push all the elements into a single array 
+then do build heap logic 
+
+tc - m(pushing all m elements ) + n+m(build heap) = n+m
+sc - log(n+m)

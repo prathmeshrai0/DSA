@@ -1,0 +1,82 @@
+https://www.geeksforgeeks.org/problems/kth-smallest-element5635/1
+
+
+you need to find the kth smallest value in unordered data set
+
+
+<!-- brute force  -->
+
+sort the array then return the kth -1 index value 
+
+tc - nlogn
+sc - logn (internally used here)
+
+
+
+<!-- better  -->
+use the prev studied heapfiy , heapfiy sort and buildheap approach here 
+
+
+basically we first do buildheap 
+
+then we know that 1st element of heap is 1st smallest
+so we count , cnt++
+
+then we swap it with last index 
+
+and again do heapify for top values as its only not in its correct place other are 
+
+now first element is the second smallest 
+so we do cnt++
+
+and continue this process until cnt reaches the kth value 
+
+if reached then return the top element
+
+TC - buildheap (n)  + loop till k * hepify single call (klogn - because its running till k only worst case k=n , so nlogn 
+but we can't always assume that k will be n as k is variable)
+
+~ n + klogn
+
+
+total tc is buildheap + heapsort 
+        
+here we are not excluding n and simply say klogn is the largest
+because k is a variable 
+and it does change and affect overall tc
+eg
+k = 1 
+n = 1000
+tc = 1000 + 1*10
+
+here larger term is n not klogn
+
+
+
+sc - logn
+
+
+
+
+<!-- optimal -->
+
+main idea is to create k size max heap to get
+kth min element,and if other k to n-1 elements 
+is lesser than the top one so pop and insert 
+current, so that we can have smaller number
+in the heap and heap itself is the max heap 
+so the top always denotes the kth smallest.
+
+create a max heap for k size elements by inserting first k elements
+
+now for k to n-1 elements compare it 
+with top of the max heap and if less 
+then pop 
+then push current element 
+
+The idea is to insert the min than top 
+so that we can have kth smallest 
+
+Tc - nlogk
+Sc - k (priority queue)
+

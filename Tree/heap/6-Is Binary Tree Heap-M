@@ -1,0 +1,59 @@
+https://www.geeksforgeeks.org/problems/is-binary-tree-heap/1
+
+
+check if the given bt is heap or not 
+
+
+
+
+<!-- approach  -->
+
+<!-- brute force  -->
+
+first check cbt then check is that heap or not 
+if both yes then return true
+
+    checkCbt - 		
+		do LO traversal and once you get empty then there shouldn't
+		be any node but if you got then that's a issue
+		
+		tc n
+		sc n
+
+    checkHeap -		
+        with recursion
+         compare current data with left and right
+		 also check left and right also does returns true
+
+		 tc n
+		 sc logn
+
+
+
+tc - n
+sc - n
+
+
+
+<!-- optimised  -->
+
+    optimised in checkCbt
+    instead of using queue approach use recursion with total count 
+
+    totalCount with recursion takes - tc n , sc logn
+
+    first of all count all no. of nodes 
+    once you get start the recursion with ind = 1 
+    now its left is ind*2 
+    right is ind*2+1 
+    if left or right nodes exists then only call for it, while calling if the left /right values goes beyond the totalcount so that's not a cbt 
+
+    tc- n
+    sc- logn
+
+
+    use same logic as above for checkHeap 
+
+
+TC-n
+SC-logn
